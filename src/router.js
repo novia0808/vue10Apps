@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory} from 'vue-router'
-import band from './pages/Band.vue'
-import calendar from './pages/Calender.vue'
+import Band from './pages/Band.vue'
+import Calendar from './pages/Calender.vue'
 import Home from './pages/Home.vue'
+import Markdown from './pages/Markdown.vue'
 
 
 const routes = [
   {path: '/', component: Home},
-  {path: '/band', component: band},
-  {path: '/calendar', component: calendar}
+  {path: '/band', component: Band},
+  {path: '/calendar', component: Calendar},
+  {path: '/markdown', component: Markdown},
 ]
 
 const router = createRouter({
