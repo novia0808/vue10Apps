@@ -15,6 +15,18 @@ import marked from 'marked'
 import debounce from '../utilities/mixins/debounce'
 
 export default {
+  // beforeCreate(){
+  //   console.log('beforeCreate');
+  // },
+  // created(){
+  //   console.log('created');
+  // },
+  // beforeMount(){
+  //   console.log('beforeMount');
+  // },
+  // mounted(){
+  //   console.log('mouted');
+  // },
   mixins:[ debounce ],
   data(){
     return {
@@ -25,7 +37,7 @@ export default {
     update(e){
       const task = () => { this.text = e.target.value }
       this.debounce(task, 500)
-    },
+    }, 
   },
   computed:{
     markedText(){

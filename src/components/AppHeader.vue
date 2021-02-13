@@ -12,6 +12,7 @@
           {title: '小眾樂團', to: '/band'},
           {title: 'Calendar', to: '/calendar'},
           {title: 'Markdown', to: '/markdown'},
+          {title: 'Slider Carousel', to: '/slider'},
           ]
       }
     }
