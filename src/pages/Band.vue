@@ -30,37 +30,37 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        newBand: "",
-        bandData: [
-          { name: "落日飛車" },
-          { name: "萬能青年旅店" },
-          { name: "CAS" },
-        ],
-      };
-    },
-    mounted(){
-      this.$refs.newBandRef.focus()
-    },
-    computed: {
-      countBands() {
-        return this.bandData.length;
-      },
-    },
-    methods: {
-      addBand() {
-        console.log("123");
-        if (this.newBand !== "") {
-          this.bandData.unshift({ name: this.newBand });
-          this.newBand = "";
+import { computed, onMounted, ref } from "vue"
+export default {
+    setup(){
+      const newBandRef = ref("")
+      const newBand = ref("")
+      const bandData = ref([
+        { name: "落日飛車" },
+        { name: "萬能青年旅店" },
+        { name:  "CAS" },
+      ])
+
+      onMounted(() => {
+        newBandRef.value.focus()
+      })
+
+      const countBands = computed({
+        get: () => bandData.value.length
+      })
+      
+      function remove(index) {
+        bandData.value = bandData.value.filter((band, i) => i != index);
+      }
+
+      function addBand() {
+        if (newBand.value !== "") {
+          bandData.value.unshift({ name: newBand.value });
+          newBand.value = "";
         }
-      },
-      remove(index) {
-        this.bandData = this.bandData.filter((band, i) => i != index);
-      },
-    },
+      }
+      return { bandData, newBand, remove, addBand, newBandRef, countBands }
+    }
   };
 </script>
 
