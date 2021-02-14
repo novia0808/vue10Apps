@@ -19,6 +19,7 @@
         class="border rounded"
         v-model="newBand"
         placeholder="Type Band Name Here"
+        ref="newBandRef"
       >
       <button
         class="border rounded bg-gradient-to-r from-blue-400 to-green-500 text-white"
@@ -39,6 +40,9 @@
           { name: "CAS" },
         ],
       };
+    },
+    mounted(){
+      this.$refs.newBandRef.focus()
     },
     computed: {
       countBands() {
