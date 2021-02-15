@@ -9,20 +9,27 @@
 <script>
   import firebase from '../utilities/firebase'
   export default {
-    props: {isLoggedIn: {type: Boolean, required: true}},
     data(){
       return {
         list: [
           {title: '小眾樂團', to: '/band'},
           {title: 'Calendar', to: '/calendar'},
           {title: 'Markdown', to: '/markdown'},
-          {title: 'Slider Carousel', to: '/slider'},
-          ]
+          {title: 'Slider', to: '/slider'},
+          {title: 'Calculator', to: '/calculator'},
+          {title: 'Modal', to: '/reusable-modal'},
+          {title: 'Chat', to: '/chat'},
+          ],
       }
     },
     methods:{
       logout(){
         firebase.auth().signOut()
+      }
+    },
+    computed:{
+      isLoggedIn(){
+        return this.$store.state.isLoggedIn
       }
     }
   };

@@ -12,9 +12,11 @@
 
 <script>
 import marked from 'marked'
-import debounce from '../utilities/mixins/debounce'
+// import debounce from '../utilities/mixins/debounce'
+import useDebounce from '../utilities/composition/useDebounce'
 
 export default {
+
   // beforeCreate(){
   //   console.log('beforeCreate');
   // },
@@ -27,13 +29,16 @@ export default {
   // mounted(){
   //   console.log('mouted');
   // },
-  mixins:[ debounce ],
+
+  // mixins:[ debounce ],
   data(){
     return {
       text: "",
+      debounce: ''
     }
   },
   mounted(){
+    this.debounce = useDebounce()
     this.$refs.markdown.focus()
   },
   methods:{
