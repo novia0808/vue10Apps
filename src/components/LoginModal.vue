@@ -1,4 +1,5 @@
 <template>
+<div v-if="isLoginOpen">
     <section @click="close" class="z-20 h-screen w-screen bg-gray-500 fixed top-0 opacity-50"></section>
     <div class="absolute inset-0">
       <div class="flex h-full">
@@ -27,6 +28,7 @@
         </div>
       </div>
     </div>
+</div>
 </template>
 
 <script>
@@ -36,6 +38,11 @@ export default {
   components: {
     GoogleLogin
   },
+  computed:{
+    isLoginOpen(){
+      return this.$store.state.isLoginOpen
+    }
+  },
   data(){
     return{
         email: 'novia@vue.com',
@@ -44,7 +51,7 @@ export default {
     }
   },
   mounted(){
-    this.$refs.loginText.focus()
+    // this.$refs.loginText.focus()
   },
   emits: ["close-login"],
   methods: {
@@ -63,7 +70,7 @@ export default {
       });
     },
     close(){
-      this.$emit('close-login')
+      this.$store.commit('setLoginModal', false)
     }
     
   }
